@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-bg: #000000;
+  --color-surface: #050505;
+  --color-accent: #0070f3; /* Modern Blue */
+  --color-accent-hover: #3291ff;
+  --color-accent-glow: rgba(0, 112, 243, 0.4);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-glass: rgba(255, 255, 255, 0.04);
+  --color-muted: rgba(255, 255, 255, 0.5);
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-white font-sans selection:bg-accent selection:text-white overflow-x-hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-sans font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-glass backdrop-blur-2xl border border-border shadow-[0_8px_32px_0_rgba(0,0,0,0.8)];
+  }
+
+  .glass-hover {
+    @apply hover:bg-white/10 hover:border-accent/40 transition-all duration-300;
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 rounded-full bg-accent text-white font-bold uppercase tracking-widest text-xs transition-all duration-300 hover:bg-accent-hover hover:shadow-[0_0_20px_var(--color-accent-glow)] active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 rounded-full bg-glass backdrop-blur-2xl border border-border shadow-[0_8px_32px_0_rgba(0,0,0,0.8)] text-white font-bold uppercase tracking-widest text-xs transition-all duration-300 hover:border-accent/50 hover:bg-accent/10 active:scale-95;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-accent;
+  }
+}
+
+canvas {
+  touch-action: none;
+}
